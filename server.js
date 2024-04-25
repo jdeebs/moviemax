@@ -10,10 +10,20 @@ http
     let requestedUrl = request.url;
     let filePath = "";
 
-    if (requestedUrl.includes("documentation.html")) {
-      filePath = "./documentation.html";
+    // Parse the requested URL for the word "documentation"
+    if (requestedUrl.includes("documentation")) {
+      filePath = (__dirname + "/documentation.html");
     } else {
-      filePath = "./index.html";
+      filePath = (__dirname + "index.html");
     }
+
+    // Use fs module to log both requested URL and a timestamp to log.txt file
+    fs.appendFile('log.txt', 'URL: ' + requestedUrl + '\nTimestamp: ' + new Date() + '\n\n', (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Added to log.');
+        }
+    });
   })
   .listen(8080);
