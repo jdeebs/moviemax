@@ -37,7 +37,9 @@ http
         throw err;
       }
       // If file found, send the content as response
-      console.log("File content: " + data.toString());
+      response.writeHead(200, { "Content-Type": "text/html" });
+      response.write(data);
+      response.end();
     });
   })
   .listen(8080); // Port 8080
