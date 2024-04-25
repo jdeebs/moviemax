@@ -12,18 +12,32 @@ http
 
     // Parse the requested URL for the word "documentation"
     if (requestedUrl.includes("documentation")) {
-      filePath = (__dirname + "/documentation.html");
+      filePath = __dirname + "/documentation.html";
     } else {
-      filePath = (__dirname + "index.html");
+      filePath = __dirname + "index.html";
     }
 
     // Use fs module to log both requested URL and a timestamp to log.txt file
-    fs.appendFile('log.txt', 'URL: ' + requestedUrl + '\nTimestamp: ' + new Date() + '\n\n', (err) => {
+    fs.appendFile(
+      "log.txt",
+      "URL: " + requestedUrl + "\nTimestamp: " + new Date() + "\n\n",
+      (err) => {
         if (err) {
-            console.log(err);
+          console.log(err);
         } else {
-            console.log('Added to log.');
+          console.log("Added to log.");
         }
+      }
+    );
+
+    // Use fs module to read requested file and send it as response
+    fs.readFile(filePath, (err, data) => {
+      // If file not found send an error
+      if (err) {
+        throw err;
+      }
+      // If file found, send the content as response
+      console.log("File content: " + data.toString());
     });
   })
-  .listen(8080);
+  .listen(8080); // Port 8080
