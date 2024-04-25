@@ -14,7 +14,7 @@ http
     if (requestedUrl.includes("documentation")) {
       filePath = __dirname + "/documentation.html";
     } else {
-      filePath = __dirname + "index.html";
+      filePath = __dirname + "/index.html";
     }
 
     // Use fs module to log both requested URL and a timestamp to log.txt file
