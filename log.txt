@@ -19,3 +19,5 @@ Timestamp: Thu Apr 25 2024 00:08:03 GMT-0700 (Mountain Standard Time)
 URL: /favicon.ico
 Timestamp: Thu Apr 25 2024 00:08:04 GMT-0700 (Mountain Standard Time)
 
+::1 - - [26/Apr/2024:19:35:13 +0000] "GET /secreturl HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [26/Apr/2024:19:35:39 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
