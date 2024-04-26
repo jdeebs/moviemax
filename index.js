@@ -1,5 +1,11 @@
-const express = require("express");
+const express = require("express"),
+  morgan = require("morgan"),
+  fs = require("fs"),
+  path = require("path");
+
 const app = express();
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'});
 
 let topMovies = [
   {
@@ -74,13 +80,18 @@ let topMovies = [
   },
 ];
 
+// Setup the logger
+app.use(morgan('combined', {stream: accessLogStream}));
+
+app.use(express.static("public"));
+
 // GET requests
-app.get('/movies', (req, res) => {
-    res.json(topMovies);
+app.get("/movies", (req, res) => {
+  res.json(topMovies);
 });
 
-app.get('/', (req, res) => {
-    res.send('Welcome to MovieMax!')
+app.get("/", (req, res) => {
+  res.send("Welcome to MovieMax!");
 });
 
-app.use(express.static('public'));
+
