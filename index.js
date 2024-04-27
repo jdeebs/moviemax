@@ -1,11 +1,15 @@
+// Require necessary modules
 const express = require("express"),
   morgan = require("morgan"),
   fs = require("fs"),
   path = require("path");
 
+// Create an Express application
 const app = express();
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'});
+const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
+  flags: "a",
+});
 
 let topMovies = [
   {
@@ -80,8 +84,8 @@ let topMovies = [
   },
 ];
 
-// Setup the logger
-app.use(morgan('combined', {stream: accessLogStream}));
+// Logger middleware
+app.use(morgan("combined", { stream: accessLogStream }));
 
 app.use(express.static("public"));
 
@@ -94,4 +98,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to MovieMax!");
 });
 
-
+// Error-handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
