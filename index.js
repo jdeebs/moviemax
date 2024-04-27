@@ -7,10 +7,12 @@ const express = require("express"),
 // Create an Express application
 const app = express();
 
+// Create a write stream for logging
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
 });
 
+// Create an array of objects for top 10 movies data
 let topMovies = [
   {
     title: "The Shawshank Redemption",
@@ -84,16 +86,18 @@ let topMovies = [
   },
 ];
 
-// Logger middleware
+// Logger middleware using Morgan
 app.use(morgan("combined", { stream: accessLogStream }));
 
+// Server static files from the public folder
 app.use(express.static("public"));
 
-// GET requests
+// Define GET endpoint to return top 10 movies data as JSON
 app.get("/movies", (req, res) => {
   res.json(topMovies);
 });
 
+// Define GET endpoint for the root URL with a default textual response
 app.get("/", (req, res) => {
   res.send("Welcome to MovieMax!");
 });
@@ -102,4 +106,9 @@ app.get("/", (req, res) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
+});
+
+// Listen for requests on port 8080
+app.listen(8080, () => {
+    console.log('Your app is listening on port 8080.');
 });

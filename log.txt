@@ -1,0 +1,5 @@
+::1 - - [27/Apr/2024:07:29:52 +0000] "GET / HTTP/1.1" 200 20 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [27/Apr/2024:07:30:08 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [27/Apr/2024:07:30:14 +0000] "GET /movies HTTP/1.1" 200 1462 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [27/Apr/2024:07:31:47 +0000] "GET /documentation HTTP/1.1" 404 152 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [27/Apr/2024:07:31:52 +0000] "GET /documentation.html HTTP/1.1" 200 297 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
