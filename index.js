@@ -20,9 +20,10 @@ let topMovies = [
     director: "Frank Darabont",
     cast: ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
     imdbRating: 9.3,
-    description:
-      "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    genre: "Drama",
+    genre: {
+      name: "Drama",
+      description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/51DPJlHuWgL._AC_.jpg",
   },
   {
@@ -31,9 +32,10 @@ let topMovies = [
     director: "Francis Ford Coppola",
     cast: ["Marlon Brando", "Al Pacino", "James Caan"],
     imdbRating: 9.2,
-    description:
-      "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-    genre: "Crime",
+    genre: {
+      name: "Crime",
+      description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/51ZBnnNzvyL._AC_.jpg",
   },
   {
@@ -42,9 +44,10 @@ let topMovies = [
     director: "Francis Ford Coppola",
     cast: ["Al Pacino", "Robert De Niro", "Robert Duvall"],
     imdbRating: 9.0,
-    description:
-      "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
-    genre: "Crime",
+    genre: {
+      name: "Crime",
+      description: "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/41t2+cWZizL._AC_.jpg",
   },
   {
@@ -53,9 +56,10 @@ let topMovies = [
     director: "Christopher Nolan",
     cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
     imdbRating: 9.0,
-    description:
-      "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-    genre: "Action",
+    genre: {
+      name: "Action",
+      description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/51Lu09Yi8rL._AC_.jpg",
   },
   {
@@ -64,9 +68,10 @@ let topMovies = [
     director: "Sidney Lumet",
     cast: ["Henry Fonda", "Lee J. Cobb", "Martin Balsam"],
     imdbRating: 8.9,
-    description:
-      "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
-    genre: "Drama",
+    genre: {
+      name: "Drama",
+      description: "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/51aAwtB1GiL._AC_.jpg",
   },
   {
@@ -75,9 +80,10 @@ let topMovies = [
     director: "Steven Spielberg",
     cast: ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
     imdbRating: 8.9,
-    description:
-      "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
-    genre: "Biography",
+    genre: {
+      name: "Biography",
+      description: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/61agSwaBqVL._AC_.jpg",
   },
   {
@@ -86,9 +92,10 @@ let topMovies = [
     director: "Peter Jackson",
     cast: ["Elijah Wood", "Viggo Mortensen", "Ian McKellen"],
     imdbRating: 8.9,
-    description:
-      "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
-    genre: "Adventure",
+    genre: {
+      name: "Adventure",
+      description: "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/81UWg+0DZtL._AC_.jpg",
   },
   {
@@ -97,9 +104,10 @@ let topMovies = [
     director: "Quentin Tarantino",
     cast: ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
     imdbRating: 8.9,
-    description:
-      "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-    genre: "Crime",
+    genre: {
+      name: "Crime",
+      description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/51UWgWpW3IL._AC_.jpg",
   },
   {
@@ -108,9 +116,10 @@ let topMovies = [
     director: "Sergio Leone",
     cast: ["Clint Eastwood", "Eli Wallach", "Lee Van Cleef"],
     imdbRating: 8.8,
-    description:
-      "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
-    genre: "Western",
+    genre: {
+      name: "Western",
+      description: "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/51d5LWp39BL._AC_.jpg",
   },
   {
@@ -119,9 +128,10 @@ let topMovies = [
     director: "David Fincher",
     cast: ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
     imdbRating: 8.8,
-    description:
-      "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
-    genre: "Drama",
+    genre: {
+      name: "Drama",
+      description: "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more."
+    },
     imageUrl: "https://m.media-amazon.com/images/I/51uv6FqqtiL._AC_.jpg",
   },
 ];
@@ -140,7 +150,7 @@ app.get("/movies", (req, res) => {
 // READ movie by title
 app.get("/movies/:title", (req, res) => {
   const { title } = req.params;
-  const movie = movies.find((movie) => movie.title === title);
+  const movie = topMovies.find((movie) => movie.title === title);
 
   if (movie) {
     res.status(200).json(movie);
@@ -152,7 +162,7 @@ app.get("/movies/:title", (req, res) => {
 // READ movie by genre
 app.get("/movies/genre/:genreName", (req, res) => {
   const { genreName } = req.params;
-  const genre = movies.find((movie) => movie.genre === genreName);
+  const genre = topMovies.find((movie) => movie.genre === genreName).genre;
 
   if (genre) {
     res.status(200).json(genre);
