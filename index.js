@@ -41,7 +41,6 @@ let topMovies = [
       description:
         "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/51DPJlHuWgL._AC_.jpg",
   },
   {
     title: "The Godfather",
@@ -54,7 +53,6 @@ let topMovies = [
       description:
         "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/51ZBnnNzvyL._AC_.jpg",
   },
   {
     title: "The Godfather: Part II",
@@ -67,7 +65,6 @@ let topMovies = [
       description:
         "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/41t2+cWZizL._AC_.jpg",
   },
   {
     title: "The Dark Knight",
@@ -80,7 +77,6 @@ let topMovies = [
       description:
         "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/51Lu09Yi8rL._AC_.jpg",
   },
   {
     title: "12 Angry Men",
@@ -93,7 +89,6 @@ let topMovies = [
       description:
         "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/51aAwtB1GiL._AC_.jpg",
   },
   {
     title: "Schindler's List",
@@ -106,7 +101,6 @@ let topMovies = [
       description:
         "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/61agSwaBqVL._AC_.jpg",
   },
   {
     title: "The Lord of the Rings: The Return of the King",
@@ -119,7 +113,6 @@ let topMovies = [
       description:
         "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/81UWg+0DZtL._AC_.jpg",
   },
   {
     title: "Pulp Fiction",
@@ -132,7 +125,6 @@ let topMovies = [
       description:
         "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/51UWgWpW3IL._AC_.jpg",
   },
   {
     title: "The Good, the Bad and the Ugly",
@@ -145,7 +137,6 @@ let topMovies = [
       description:
         "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/51d5LWp39BL._AC_.jpg",
   },
   {
     title: "Fight Club",
@@ -158,7 +149,6 @@ let topMovies = [
       description:
         "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
     },
-    imageUrl: "https://m.media-amazon.com/images/I/51uv6FqqtiL._AC_.jpg",
   },
 ];
 
