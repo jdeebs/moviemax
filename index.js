@@ -162,12 +162,24 @@ app.get("/movies/:title", (req, res) => {
 // READ movie by genre
 app.get("/movies/genre/:genreName", (req, res) => {
   const { genreName } = req.params;
-  const genre = topMovies.find((movie) => movie.genre === genreName).genre;
+  const genre = topMovies.find((movie) => movie.genre.name === genreName).genre;
 
   if (genre) {
     res.status(200).json(genre);
   } else {
     res.status(400).send("No such genre");
+  }
+});
+
+// READ movie by director
+app.get("/movies/director/:directorName", (req, res) => {
+  const { directorName } = req.params;
+  const director = topMovies.find((movie) => movie.director === directorName).director;
+
+  if (director) {
+    res.status(200).json(director);
+  } else {
+    res.status(400).send("No such director");
   }
 });
 
