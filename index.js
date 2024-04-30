@@ -92,9 +92,21 @@ app.use(morgan("combined", { stream: accessLogStream }));
 // Server static files from the public folder
 app.use(express.static("public"));
 
-// Define GET endpoint to return top 10 movies data as JSON
+// READ top 10 movies data as JSON
 app.get("/movies", (req, res) => {
-  res.json(topMovies);
+  res.status(200).json(topMovies);
+});
+
+// READ movie by title
+app.get("/movies/:title", (req, res) => {
+  const { title } = req.params;
+  const movie = movies.find((movie) => movie.Title === title);
+
+  if (movie) {
+    res.status(200).json(movie);
+  } else {
+    res.status(400).send("No such movie");
+  }
 });
 
 // Define GET endpoint for the root URL with a default textual response
@@ -110,5 +122,5 @@ app.use((err, req, res, next) => {
 
 // Listen for requests on port 8080
 app.listen(8080, () => {
-    console.log('Your app is listening on port 8080.');
+  console.log("Your app is listening on port 8080.");
 });
