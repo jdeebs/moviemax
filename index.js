@@ -174,21 +174,6 @@ app.post("/users", (req, res) => {
   }
 });
 
-// UPDATE users name by ID
-app.patch("/users/:id", (req, res) => {
-  const { id } = req.params;
-  const updateUser = req.body;
-
-  let user = users.find((user) => user.id == id);
-
-  if (user) {
-    user.name = updateUser.name;
-    res.status(200).json(user);
-  } else {
-    res.status(400).send("No such user");
-  }
-});
-
 // CREATE new favorite movies by title
 app.post("/users/:id/:movieTitle", (req, res) => {
   const { id, movieTitle } = req.params;
@@ -203,36 +188,9 @@ app.post("/users/:id/:movieTitle", (req, res) => {
   }
 });
 
-// DELETE favorite movies by title
-app.delete("/users/:id/:movieTitle", (req, res) => {
-  const { id, movieTitle } = req.params;
-
-  let user = users.find((user) => user.id == id);
-
-  if (user) {
-    user.favoriteMovies = user.favoriteMovies.filter(
-      (title) => title !== movieTitle
-    );
-    res
-      .status(200)
-      .send(`${movieTitle} has been removed from user ${id}'s array`);
-  } else {
-    res.status(400).send("No such user");
-  }
-});
-
-// DELETE user by ID
-app.delete("/users/:id", (req, res) => {
-  const { id } = req.params;
-
-  let user = users.find((user) => user.id == id);
-
-  if (user) {
-    users = users.filter((user) => user.id != id);
-    res.status(200).send(`User ${id} has been deleted`);
-  } else {
-    res.status(400).send("No such user");
-  }
+// READ endpoint for the root URL, respond with a default textual response
+app.get("/", (req, res) => {
+  res.send("Welcome to MovieMax!");
 });
 
 // READ top 10 movies data as JSON
@@ -278,9 +236,51 @@ app.get("/movies/director/:directorName", (req, res) => {
   }
 });
 
-// GET endpoint for the root URL with a default textual response
-app.get("/", (req, res) => {
-  res.send("Welcome to MovieMax!");
+// UPDATE users name by ID
+app.patch("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const updateUser = req.body;
+
+  let user = users.find((user) => user.id == id);
+
+  if (user) {
+    user.name = updateUser.name;
+    res.status(200).json(user);
+  } else {
+    res.status(400).send("No such user");
+  }
+});
+
+// DELETE user by ID
+app.delete("/users/:id", (req, res) => {
+  const { id } = req.params;
+
+  let user = users.find((user) => user.id == id);
+
+  if (user) {
+    users = users.filter((user) => user.id != id);
+    res.status(200).send(`User ${id} has been deleted`);
+  } else {
+    res.status(400).send("No such user");
+  }
+});
+
+// DELETE favorite movies by title
+app.delete("/users/:id/:movieTitle", (req, res) => {
+  const { id, movieTitle } = req.params;
+
+  let user = users.find((user) => user.id == id);
+
+  if (user) {
+    user.favoriteMovies = user.favoriteMovies.filter(
+      (title) => title !== movieTitle
+    );
+    res
+      .status(200)
+      .send(`${movieTitle} has been removed from user ${id}'s array`);
+  } else {
+    res.status(400).send("No such user");
+  }
 });
 
 // Error-handling middleware

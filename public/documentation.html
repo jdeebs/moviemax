@@ -3,12 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Documentation</title>
+    <title>MovieMax API Documentation</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
   </head>
   <body>
-    <h1>MovieMax Documentation</h1>
-    <section>
-      <p></p>
-    </section>
+    <h1>MovieMax API Documentation</h1>
+    <table>
+      <tr>
+        <th>Description</th>
+        <th>Endpoint</th>
+        <th>Method</th>
+        <th>Query Parameters</th>
+        <th>Request Body Format (Example)</th>
+        <th>Response Data Format (Example)</th>
+        <th>Example Request</th>
+        <th>Example Response</th>
+      </tr>
+      <!-- Rows with API endpoints documentation -->
+      <tr>
+        <td>/movies</td>
+        <td>Get top 10 movies data</td>
+        <td>GET</td>
+        <td>N/A</td>
+        <td>N/A</td>
+        <td>Array of movie objects</td>
+        <td>N/A</td>
+        <td>
+          [{ "title": "The Shawshank Redemption", "year": 1994, ... }, ...]
+        </td>
+      </tr>
+      
+    </table>
   </body>
 </html>
