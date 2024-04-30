@@ -140,12 +140,24 @@ app.get("/movies", (req, res) => {
 // READ movie by title
 app.get("/movies/:title", (req, res) => {
   const { title } = req.params;
-  const movie = movies.find((movie) => movie.Title === title);
+  const movie = movies.find((movie) => movie.title === title);
 
   if (movie) {
     res.status(200).json(movie);
   } else {
     res.status(400).send("No such movie");
+  }
+});
+
+// READ movie by genre
+app.get("/movies/genre/:genreName", (req, res) => {
+  const { genreName } = req.params;
+  const genre = movies.find((movie) => movie.genre === genreName);
+
+  if (genre) {
+    res.status(200).json(genre);
+  } else {
+    res.status(400).send("No such genre");
   }
 });
 
