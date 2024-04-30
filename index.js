@@ -220,8 +220,26 @@ app.delete("/users/:id/:movieTitle", (req, res) => {
   let user = users.find((user) => user.id == id);
 
   if (user) {
-    user.favoriteMovies = user.favoriteMovies.filter((title) => title !== movieTitle);
-    res.status(200).send(`${movieTitle} has been removed from user ${id}'s array`);
+    user.favoriteMovies = user.favoriteMovies.filter(
+      (title) => title !== movieTitle
+    );
+    res
+      .status(200)
+      .send(`${movieTitle} has been removed from user ${id}'s array`);
+  } else {
+    res.status(400).send("No such user");
+  }
+});
+
+// DELETE user by ID
+app.delete("/users/:id", (req, res) => {
+  const { id } = req.params;
+
+  let user = users.find((user) => user.id == id);
+
+  if (user) {
+    users = users.filter((user) => user.id != id);
+    res.status(200).send(`User ${id} has been deleted`);
   } else {
     res.status(400).send("No such user");
   }
@@ -270,7 +288,7 @@ app.get("/movies/director/:directorName", (req, res) => {
   }
 });
 
-// Define GET endpoint for the root URL with a default textual response
+// GET endpoint for the root URL with a default textual response
 app.get("/", (req, res) => {
   res.send("Welcome to MovieMax!");
 });
