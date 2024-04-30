@@ -184,6 +184,22 @@ app.post("/users", (req, res) => {
   }
 });
 
+// UPDATE user by ID
+app.patch("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const updateUser = req.body;
+
+  let user = users.find((user) => user.id == id);
+
+  if (user) {
+    user.name = updateUser.name;
+    user.favoriteMovies = updateUser.favoriteMovies;
+    res.status(200).json(user);
+  } else {
+    res.status(400).send("No such user");
+  }
+});
+
 // READ top 10 movies data as JSON
 app.get("/movies", (req, res) => {
   res.status(200).json(topMovies);
