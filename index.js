@@ -2,7 +2,9 @@
 const express = require("express"),
   morgan = require("morgan"),
   fs = require("fs"),
-  path = require("path");
+  path = require("path"),
+  bodyParser = require("body-parser"),
+  uuid = require("uuid");
 
 // Create an Express application
 const app = express();
@@ -13,7 +15,18 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 });
 
 // Create an array of objects for users
-let users = [];
+let users = [
+  {
+    id: 1,
+    name: "Joe",
+    favoriteMovies: [],
+  },
+  {
+    id: 2,
+    name: "Rob",
+    favoriteMovies: ["The Shawshank Redemption"],
+  },
+];
 
 // Create an array of objects for top 10 movies data
 let topMovies = [
@@ -151,6 +164,9 @@ let topMovies = [
 
 // Logger middleware using Morgan
 app.use(morgan("combined", { stream: accessLogStream }));
+
+// bodyParser middleware to parse JSON bodies
+app.use(bodyParser.json());
 
 // Server static files from the public folder
 app.use(express.static("public"));

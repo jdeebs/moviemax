@@ -82,6 +82,7 @@
     "text-table": "^0.2.0",
     "type-check": "^0.4.0",
     "uri-js": "^4.4.1",
+    "uuid": "^9.0.1",
     "which": "^2.0.2",
     "yocto-queue": "^0.1.0"
   },
