@@ -184,7 +184,7 @@ app.post("/users", (req, res) => {
   }
 });
 
-// UPDATE user by ID
+// UPDATE users name by ID
 app.patch("/users/:id", (req, res) => {
   const { id } = req.params;
   const updateUser = req.body;
@@ -193,7 +193,34 @@ app.patch("/users/:id", (req, res) => {
 
   if (user) {
     user.name = updateUser.name;
-    user.favoriteMovies = updateUser.favoriteMovies;
+    res.status(200).json(user);
+  } else {
+    res.status(400).send("No such user");
+  }
+});
+
+// CREATE new favorite movies by title
+app.post("/users/:id/:movieTitle", (req, res) => {
+  const { id, movieTitle } = req.params;
+
+  let user = users.find((user) => user.id == id);
+
+  if (user) {
+    user.favoriteMovies.push(movieTitle);
+    res.status(200).json(user);
+  } else {
+    res.status(400).send("No such user");
+  }
+});
+
+// DELETE favorite movies by title
+app.delete("/users/:id/:movieTitle", (req, res) => {
+  const { id, movieTitle } = req.params;
+
+  let user = users.find((user) => user.id == id);
+
+  if (user) {
+    user.favoriteMovies = user.favoriteMovies.filter((title) => title !== movieTitle);
     res.status(200).json(user);
   } else {
     res.status(400).send("No such user");
