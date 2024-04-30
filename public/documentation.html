@@ -35,15 +35,30 @@
       </tr>
       <!-- Rows with API endpoints documentation -->
       <tr>
-        <td>/movies</td>
-        <td>Get top 10 movies data</td>
-        <td>GET</td>
+        <td>Create new user</td>
+        <td>/users</td>
+        <td>POST</td>
         <td>N/A</td>
-        <td>N/A</td>
-        <td>Array of movie objects</td>
-        <td>N/A</td>
+        <td>JSON object with a "name" property</td>
+        <td>User object with uniquely generated "id"</td>
         <td>
-          [{ "title": "The Shawshank Redemption", "year": 1994, ... }, ...]
+          <pre>
+              <code>
+  {
+    "name": "John"
+  }
+              </code>
+          </pre>
+        </td>
+        <td>
+          <pre>
+              <code>
+  {
+    "id": "d6c1b913-d8ad-4b57-a346-7f4b674ac67c",
+    "name": "John"
+  }
+              </code>
+          </pre>
         </td>
       </tr>
       
