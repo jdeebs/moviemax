@@ -47,23 +47,15 @@
       <td>JSON object with a "name" property</td>
       <td>JSON object with uniquely generated "id"</td>
       <td>
-        <pre>
-              <code>
-  {
-    "name": "John"
-  }
-              </code>
-          </pre>
+        <pre><code>{
+  "name": "John"
+}</code></pre>
       </td>
       <td>
-        <pre>
-              <code>
-  {
-    "id": "d6c1b913-d8ad-4b57-a346-7f4b674ac67c",
-    "name": "John"
-  }
-              </code>
-          </pre>
+        <pre><code>{
+  "id": "d6c1b913-d8ad-4b57-a346-7f4b674ac67c",
+  "name": "John"
+}</code></pre>
       </td>
     </tr>
     <!-- /users/:id/:movieTitle -->
@@ -75,18 +67,10 @@
       <td>N/A</td>
       <td>Text response indicating the movie has been added</td>
       <td>
-        <pre>
-                <code>
-  http://example.com/users/1/The%20Shawshank%20Redemption
-                </code>
-            </pre>
+        <pre><code>http://example.com/users/1/The%20Shawshank%20Redemption</code></pre>
       </td>
       <td>
-        <pre>
-                <code>
-  The Shawshank Redemption has been added to user 1's array
-                </code>
-            </pre>
+        <pre><code>The Shawshank Redemption has been added to user 1's array</code></pre>
       </td>
     </tr>
     <!-- Root dir: / -->
@@ -98,18 +82,10 @@
       <td>N/A</td>
       <td>Text response with a welcome message</td>
       <td>
-        <pre>
-                <code>
-  http://example.com/
-                </code>
-            </pre>
+        <pre><code>http://example.com/</code></pre>
       </td>
       <td>
-        <pre>
-                <code>
-  Welcome to MovieMax!
-                </code>
-            </pre>
+        <pre><code>Welcome to MovieMax!</code></pre>
       </td>
     </tr>
     <!-- /movies -->
@@ -119,39 +95,30 @@
       <td>GET</td>
       <td>N/A</td>
       <td>N/A</td>
+      <td>Array of JSON objects with "title", "year", "director", "cast", "imdbRating", and "genre" properties</td>
       <td>
-        Array of JSON objects with "title", "year", "director", "cast", "imdbRating",
-        and "genre" properties
+        <pre><code>http://example.com/movies</code></pre>
       </td>
       <td>
-        <pre>
-                <code>
-  http://example.com/movies
-                </code>
-            </pre>
-      </td>
-      <td>
-        <pre>
-                <code>
-  {
-    "title": "The Shawshank Redemption",
-    "year": 1994,
-    "director": "Frank Darabont",
-    "cast": [
+        <pre><code>{
+  "title": "The Shawshank Redemption",
+  "year": 1994,
+  "director": "Frank Darabont",
+  "cast": [
     "Tim Robbins",
     "Morgan Freeman",
     "Bob Gunton"
-    ],
-    "imdbRating": 9.3,
-    "genre": {
+  ],
+  "imdbRating": 9.3,
+  "genre": {
     "name": "Drama",
     "description": "..."
   }
-  {
-    title: "The Godfather",
+}
+{
+  title: "The Godfather",
   ...
-                </code>
-            </pre>
+}</code></pre>
       </td>
     </tr>
     <!-- /movies/genre/:genreName -->
@@ -163,26 +130,18 @@
       <td>N/A</td>
       <td>Array of JSON objects with "title", "genre", "name", and "description" properties</td>
       <td>
-        <pre>
-                <code>
-  http://example.com/movies/genre/Western
-                </code>
-            </pre>
+        <pre><code>http://example.com/movies/genre/Western</code></pre>
       </td>
       <td>
-        <pre>
-                <code>
-  [
-    {
-      "title": "The Good, the Bad and the Ugly",
-      "genre": {
+        <pre><code>[
+  {
+    "title": "The Good, the Bad and the Ugly",
+    "genre": {
       "name": "Western",
       "description": "..."
-      }
     }
-  ]
-                </code>
-            </pre>
+  }
+]</code></pre>
       </td>
     </tr>
     <!-- /movies/:title -->
@@ -192,73 +151,102 @@
       <td>GET</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>JSON object with "title", "year", "director", "cast", "imdbRating",
-        and "genre" properties</td>
+      <td>JSON object with "title", "year", "director", "cast", "imdbRating", and "genre" properties</td>
       <td>
-        <pre>
-                      <code>
-        http://example.com/movies/The%20Shawshank%20Redemption
-                      </code>
-                  </pre>
+        <pre><code>http://example.com/movies/The%20Shawshank%20Redemption</code></pre>
       </td>
       <td>
-        <pre>
-                      <code>
-         {
-          "title": "The Shawshank Redemption",
-          "year": 1994,
-          "director": "Frank Darabont",
-          "cast": [
-          "Tim Robbins",
-          "Morgan Freeman",
-          "Bob Gunton"
-          ],
-          "imdbRating": 9.3,
-          "genre": {
-          "name": "Drama",
-          "description": "..."
-        }
-                      </code>
-                  </pre>
+        <pre><code>{
+  "title": "The Shawshank Redemption",
+  "year": 1994,
+  "director": "Frank Darabont",
+  "cast": [
+    "Tim Robbins",
+    "Morgan Freeman",
+    "Bob Gunton"
+  ],
+  "imdbRating": 9.3,
+  "genre": {
+    "name": "Drama",
+    "description": "..."
+  }
+}</code></pre>
       </td>
     </tr>
-        <!-- /movies/director/:directorName -->
-        <tr>
-          <td>Get movie data by director name</td>
-          <td>/movies/director/:directorName</td>
-          <td>GET</td>
-          <td>N/A</td>
-          <td>N/A</td>
-          <td>JSON object with "title", "year", "director", "cast", "imdbRating",
-            and "genre" properties</td>
-          <td>
-            <pre>
-                          <code>
-            http://example.com/movies/The%20Shawshank%20Redemption
-                          </code>
-                      </pre>
-          </td>
-          <td>
-            <pre>
-                          <code>
-             {
-              "title": "The Shawshank Redemption",
-              "year": 1994,
-              "director": "Frank Darabont",
-              "cast": [
-              "Tim Robbins",
-              "Morgan Freeman",
-              "Bob Gunton"
-              ],
-              "imdbRating": 9.3,
-              "genre": {
-              "name": "Drama",
-              "description": "..."
-            }
-                          </code>
-                      </pre>
-          </td>
-        </tr>
+    <!-- /movies/director/:directorName -->
+    <tr>
+      <td>Get movie data by director name</td>
+      <td>/movies/director/:directorName</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>JSON object with "title", "year", "director", "cast", "imdbRating", and "genre" properties</td>
+      <td>
+        <pre><code>http://example.com/movies/director/Christopher%20Nolan</code></pre>
+      </td>
+      <td>
+        <pre><code>[
+  {
+    title: "The Dark Knight",
+    director: "Christopher Nolan",
+  },
+];</code></pre>
+      </td>
+    </tr>
+    <!-- /users/:id -->
+    <tr>
+      <td>Update user name by ID</td>
+      <td>/users/:id</td>
+      <td>PATCH</td>
+      <td>N/A</td>
+      <td>JSON object with a "name" property</td>
+      <td>JSON object with "id", "name", and "favoriteMovies" properties</td>
+      <td>
+        <pre><code>
+{
+  "name": "Joe Dirt"
+}
+    </code></pre>
+      </td>
+      <td>
+        <pre><code>{
+  "id": 1,
+  "name": "Joe Dirt",
+  "favoriteMovies": []
+}
+    </code></pre>
+      </td>
+    </tr>
+    <!-- /users/:id -->
+    <tr>
+      <td>Delete user by ID</td>
+      <td>/users/:id</td>
+      <td>DELETE</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>Text</td>
+      <td>
+        <pre><code>http://example.com/users/1</code></pre>
+      </td>
+      <td>
+        <pre><code>User 1 has been deleted</code></pre>
+      </td>
+    </tr>
+    <!-- /users/:id/:movieTitle -->
+    <tr>
+      <td>Delete favorite movie(s) for a user by title</td>
+      <td>/users/:id/:movieTitle</td>
+      <td>DELETE</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>Text</td>
+      <td>
+        <pre><code>http://example.com/users/2/The%20Shawshank%20Redemption</code></pre>
+      </td>
+      <td>
+        <pre><code>The Shawshank Redemption has been removed from user 2's array</code></pre>
+      </td>
+    </tr>
   </table>
 </body>
 
