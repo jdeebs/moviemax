@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MovieMax API Documentation</title>
   <style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
+      overflow-x: auto;
     }
 
     th,
@@ -44,8 +50,8 @@
       <td>/users</td>
       <td>POST</td>
       <td>N/A</td>
-      <td>JSON object with a "name" property</td>
-      <td>JSON object with uniquely generated "id"</td>
+      <td>application/json</td>
+      <td>application/json</td>
       <td>
         <pre><code>{
   "name": "John"
@@ -65,7 +71,7 @@
       <td>POST</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>Text response indicating the movie has been added</td>
+      <td>text/plain</td>
       <td>
         <pre><code>http://example.com/users/1/The%20Shawshank%20Redemption</code></pre>
       </td>
@@ -80,7 +86,7 @@
       <td>GET</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>Text response with a welcome message</td>
+      <td>text/plain</td>
       <td>
         <pre><code>http://example.com/</code></pre>
       </td>
@@ -95,7 +101,7 @@
       <td>GET</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>Array of JSON objects with "title", "year", "director", "cast", "imdbRating", and "genre" properties</td>
+      <td>application/json</td>
       <td>
         <pre><code>http://example.com/movies</code></pre>
       </td>
@@ -128,7 +134,7 @@
       <td>GET</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>Array of JSON objects with "title", "genre", "name", and "description" properties</td>
+      <td>application/json</td>
       <td>
         <pre><code>http://example.com/movies/genre/Western</code></pre>
       </td>
@@ -151,7 +157,7 @@
       <td>GET</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>JSON object with "title", "year", "director", "cast", "imdbRating", and "genre" properties</td>
+      <td>application/json</td>
       <td>
         <pre><code>http://example.com/movies/The%20Shawshank%20Redemption</code></pre>
       </td>
@@ -180,7 +186,7 @@
       <td>GET</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>JSON object with "title", "year", "director", "cast", "imdbRating", and "genre" properties</td>
+      <td>application/json</td>
       <td>
         <pre><code>http://example.com/movies/director/Christopher%20Nolan</code></pre>
       </td>
@@ -199,8 +205,8 @@
       <td>/users/:id</td>
       <td>PATCH</td>
       <td>N/A</td>
-      <td>JSON object with a "name" property</td>
-      <td>JSON object with "id", "name", and "favoriteMovies" properties</td>
+      <td>application/json</td>
+      <td>application/json</td>
       <td>
         <pre><code>
 {
@@ -224,7 +230,7 @@
       <td>DELETE</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>Text</td>
+      <td>text/plain</td>
       <td>
         <pre><code>http://example.com/users/1</code></pre>
       </td>
@@ -239,7 +245,7 @@
       <td>DELETE</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>Text</td>
+      <td>text/plain</td>
       <td>
         <pre><code>http://example.com/users/2/The%20Shawshank%20Redemption</code></pre>
       </td>
