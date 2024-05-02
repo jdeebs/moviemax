@@ -1,57 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MovieMax API Documentation</title>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        border: 1px solid #dddddd;
-        padding: 8px;
-        text-align: left;
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>MovieMax API Documentation</h1>
-    <table>
-      <tr>
-        <th>Description</th>
-        <th>Endpoint</th>
-        <th>Method</th>
-        <th>Query Parameters</th>
-        <th>Request Body Format (Example)</th>
-        <th>Response Data Format (Example)</th>
-        <th>Example Request</th>
-        <th>Example Response</th>
-      </tr>
-      <!-- Rows with API endpoints documentation -->
-      <tr>
-        <td>Create new user</td>
-        <td>/users</td>
-        <td>POST</td>
-        <td>N/A</td>
-        <td>JSON object with a "name" property</td>
-        <td>User object with uniquely generated "id"</td>
-        <td>
-          <pre>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MovieMax API Documentation</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #dddddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>MovieMax API Documentation</h1>
+  <table>
+    <tr>
+      <th>Description</th>
+      <th>Endpoint</th>
+      <th>Method</th>
+      <th>Query Parameters</th>
+      <th>Request Body Format</th>
+      <th>Response Data Format</th>
+      <th>Example Request</th>
+      <th>Example Response</th>
+    </tr>
+    <!-- Rows with API endpoints documentation -->
+    <!-- /user -->
+    <tr>
+      <td>Create new user</td>
+      <td>/users</td>
+      <td>POST</td>
+      <td>N/A</td>
+      <td>JSON object with a "name" property</td>
+      <td>JSON object with uniquely generated "id"</td>
+      <td>
+        <pre>
               <code>
   {
     "name": "John"
   }
               </code>
           </pre>
-        </td>
-        <td>
-          <pre>
+      </td>
+      <td>
+        <pre>
               <code>
   {
     "id": "d6c1b913-d8ad-4b57-a346-7f4b674ac67c",
@@ -59,9 +64,202 @@
   }
               </code>
           </pre>
-        </td>
-      </tr>
-      
-    </table>
-  </body>
+      </td>
+    </tr>
+    <!-- /users/:id/:movieTitle -->
+    <tr>
+      <td>Add new favorite movie(s) for a user</td>
+      <td>/users/:id/:movieTitle</td>
+      <td>POST</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>Text response indicating the movie has been added</td>
+      <td>
+        <pre>
+                <code>
+  http://example.com/users/1/The%20Shawshank%20Redemption
+                </code>
+            </pre>
+      </td>
+      <td>
+        <pre>
+                <code>
+  The Shawshank Redemption has been added to user 1's array
+                </code>
+            </pre>
+      </td>
+    </tr>
+    <!-- Root dir: / -->
+    <tr>
+      <td>Root directory message</td>
+      <td>/</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>Text response with a welcome message</td>
+      <td>
+        <pre>
+                <code>
+  http://example.com/
+                </code>
+            </pre>
+      </td>
+      <td>
+        <pre>
+                <code>
+  Welcome to MovieMax!
+                </code>
+            </pre>
+      </td>
+    </tr>
+    <!-- /movies -->
+    <tr>
+      <td>Get top movies data</td>
+      <td>/movies</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>
+        Array of JSON objects with "title", "year", "director", "cast", "imdbRating",
+        and "genre" properties
+      </td>
+      <td>
+        <pre>
+                <code>
+  http://example.com/movies
+                </code>
+            </pre>
+      </td>
+      <td>
+        <pre>
+                <code>
+  {
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "director": "Frank Darabont",
+    "cast": [
+    "Tim Robbins",
+    "Morgan Freeman",
+    "Bob Gunton"
+    ],
+    "imdbRating": 9.3,
+    "genre": {
+    "name": "Drama",
+    "description": "..."
+  }
+  {
+    title: "The Godfather",
+  ...
+                </code>
+            </pre>
+      </td>
+    </tr>
+    <!-- /movies/genre/:genreName -->
+    <tr>
+      <td>Get movie data by genre</td>
+      <td>/movies/genre/:genreName</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>Array of JSON objects with "title", "genre", "name", and "description" properties</td>
+      <td>
+        <pre>
+                <code>
+  http://example.com/movies/genre/Western
+                </code>
+            </pre>
+      </td>
+      <td>
+        <pre>
+                <code>
+  [
+    {
+      "title": "The Good, the Bad and the Ugly",
+      "genre": {
+      "name": "Western",
+      "description": "..."
+      }
+    }
+  ]
+                </code>
+            </pre>
+      </td>
+    </tr>
+    <!-- /movies/:title -->
+    <tr>
+      <td>Get movie data by title</td>
+      <td>/movies/:title</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>JSON object with "title", "year", "director", "cast", "imdbRating",
+        and "genre" properties</td>
+      <td>
+        <pre>
+                      <code>
+        http://example.com/movies/The%20Shawshank%20Redemption
+                      </code>
+                  </pre>
+      </td>
+      <td>
+        <pre>
+                      <code>
+         {
+          "title": "The Shawshank Redemption",
+          "year": 1994,
+          "director": "Frank Darabont",
+          "cast": [
+          "Tim Robbins",
+          "Morgan Freeman",
+          "Bob Gunton"
+          ],
+          "imdbRating": 9.3,
+          "genre": {
+          "name": "Drama",
+          "description": "..."
+        }
+                      </code>
+                  </pre>
+      </td>
+    </tr>
+        <!-- /movies/director/:directorName -->
+        <tr>
+          <td>Get movie data by director name</td>
+          <td>/movies/director/:directorName</td>
+          <td>GET</td>
+          <td>N/A</td>
+          <td>N/A</td>
+          <td>JSON object with "title", "year", "director", "cast", "imdbRating",
+            and "genre" properties</td>
+          <td>
+            <pre>
+                          <code>
+            http://example.com/movies/The%20Shawshank%20Redemption
+                          </code>
+                      </pre>
+          </td>
+          <td>
+            <pre>
+                          <code>
+             {
+              "title": "The Shawshank Redemption",
+              "year": 1994,
+              "director": "Frank Darabont",
+              "cast": [
+              "Tim Robbins",
+              "Morgan Freeman",
+              "Bob Gunton"
+              ],
+              "imdbRating": 9.3,
+              "genre": {
+              "name": "Drama",
+              "description": "..."
+            }
+                          </code>
+                      </pre>
+          </td>
+        </tr>
+  </table>
+</body>
+
 </html>

@@ -5,6 +5,7 @@ const express = require("express"),
   path = require("path"),
   bodyParser = require("body-parser"),
   uuid = require("uuid");
+const { title } = require("process");
 
 // Create an Express application
 const app = express();
@@ -213,26 +214,41 @@ app.get("/movies/:title", (req, res) => {
 // READ movie by genre
 app.get("/movies/genre/:genreName", (req, res) => {
   const { genreName } = req.params;
+  const moviesWithGenre = topMovies.filter(
+    (movie) => movie.genre.name === genreName
+  );
   const genre = topMovies.find((movie) => movie.genre.name === genreName).genre;
 
-  if (genre) {
-    res.status(200).json(genre);
+  if (moviesWithGenre.length > 0) {
+    const moviesWithTitle = moviesWithGenre.map((movie) => {
+      return {
+        title: movie.title,
+        genre: movie.genre,
+      };
+    });
+    res.status(200).json(moviesWithTitle);
   } else {
-    res.status(400).send("No such genre");
+    res.status(400).send("No movies found for the given genre");
   }
 });
 
 // READ movie by director
 app.get("/movies/director/:directorName", (req, res) => {
   const { directorName } = req.params;
-  const director = topMovies.find(
+  const moviesWithDirector = topMovies.filter(
     (movie) => movie.director === directorName
-  ).director;
+  );
 
-  if (director) {
-    res.status(200).json(director);
+  if (moviesWithDirector.length > 0) {
+    const titleAndDirector = moviesWithDirector.map((movie) => {
+      return {
+        title: movie.title,
+        director: movie.director
+      };
+    });
+    res.status(200).json(titleAndDirector);
   } else {
-    res.status(400).send("No such director");
+    res.status(400).send("No movies found with the given director");
   }
 });
 
