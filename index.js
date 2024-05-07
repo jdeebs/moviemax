@@ -3,7 +3,6 @@ const express = require("express"),
   morgan = require("morgan"),
   fs = require("fs"),
   path = require("path"),
-  bodyParser = require("body-parser"),
   uuid = require("uuid"),
   mongoose = require("mongoose"),
   Models = require("./models.js");
