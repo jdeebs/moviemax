@@ -4,11 +4,23 @@ const express = require("express"),
   fs = require("fs"),
   path = require("path"),
   bodyParser = require("body-parser"),
-  uuid = require("uuid");
+  uuid = require("uuid"),
+  mongoose = require("mongoose"),
+  Models = require("./models.js");
 const { title } = require("process");
 
 // Create an Express application
 const app = express();
+
+// Reference movie and user Mongoose models
+const Movies = Models.Movie;
+const Users = Models.User;
+
+// Allow Mongoose to connect to the database
+mongoose.connect("mongodb://localhost:27017/movieMaxDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Create a write stream for logging
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
@@ -243,7 +255,7 @@ app.get("/movies/director/:directorName", (req, res) => {
     const titleAndDirector = moviesWithDirector.map((movie) => {
       return {
         title: movie.title,
-        director: movie.director
+        director: movie.director,
       };
     });
     res.status(200).json(titleAndDirector);
