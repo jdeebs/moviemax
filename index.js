@@ -10,6 +10,9 @@ const { title } = require("process");
 
 // Create an Express application
 const app = express();
+// Include body-parser with Express
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Reference movie and user Mongoose models
 const Movies = Models.Movie;
@@ -166,9 +169,6 @@ let topMovies = [
 
 // Logger middleware using Morgan
 app.use(morgan("combined", { stream: accessLogStream }));
-
-// bodyParser middleware to parse JSON bodies
-app.use(bodyParser.json());
 
 // Server static files from the public folder
 app.use(express.static("public"));
