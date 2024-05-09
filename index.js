@@ -347,7 +347,7 @@ app.delete("/users/:id", (req, res) => {
 
 // DELETE favorite movies from user by movie ID
 app.delete("/users/:Username/movies/:MovieID", async (req, res) => {
-  await Users.findOneAndRemove(
+  await Users.findOneAndUpdate(
     { Username: req.params.Username },
     {
       $pull: { FavoriteMovies: req.params.MovieID },
