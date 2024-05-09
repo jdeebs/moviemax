@@ -64,19 +64,29 @@
 }</code></pre>
       </td>
     </tr>
-    <!-- /users/:id/:movieTitle -->
+    <!-- /users/:Username/movies/:MovieID -->
     <tr>
-      <td>Add new favorite movie(s) for a user</td>
-      <td>/users/:id/:movieTitle</td>
+      <td>Add new favorite movie to a user by username</td>
+      <td>/users/:Username/movies/:MovieID</td>
       <td>POST</td>
       <td>N/A</td>
       <td>N/A</td>
-      <td>text/plain</td>
+      <td>application/json</td>
       <td>
-        <pre><code>http://example.com/users/1/The%20Shawshank%20Redemption</code></pre>
+        <pre><code>http://example.com/users/testuser01/movies/6639bbf6491a0a26da3434b7</code></pre>
       </td>
       <td>
-        <pre><code>The Shawshank Redemption has been added to user 1's array</code></pre>
+        <pre><code>{
+  "_id": "663d27dca37f50f676329974",
+  "Username": "testuser01",
+  "Password": "password",
+  "Email": "email@email.com",
+  "Birthday": "1995-09-02T00:00:00.000Z",
+  "FavoriteMovies": [
+      "6639bbf6491a0a26da3434b7"
+  ],
+  "__v": 0
+}</code></pre>
       </td>
     </tr>
     <!-- Root dir: / -->
