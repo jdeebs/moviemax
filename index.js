@@ -223,9 +223,16 @@ app.get("/", (req, res) => {
   res.send("Welcome to MovieMax!");
 });
 
-// READ top 10 movies data as JSON
+// READ all movie data
 app.get("/movies", (req, res) => {
-  res.status(200).json(topMovies);
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // READ movie by title
