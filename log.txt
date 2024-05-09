@@ -96,3 +96,4 @@
 ::1 - - [09/May/2024:21:08:23 +0000] "DELETE /users/testuser01 HTTP/1.1" 200 23 "-" "PostmanRuntime/7.37.3"
 ::1 - - [09/May/2024:21:09:43 +0000] "DELETE /users/testuser01 HTTP/1.1" 400 25 "-" "PostmanRuntime/7.37.3"
 ::1 - - [09/May/2024:21:46:10 +0000] "GET /movies HTTP/1.1" 201 7626 "-" "PostmanRuntime/7.37.3"
+::1 - - [09/May/2024:21:50:59 +0000] "GET /movies HTTP/1.1" 201 7626 "-" "PostmanRuntime/7.37.3"
