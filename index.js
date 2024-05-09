@@ -98,15 +98,15 @@ app.get("/movies", (req, res) => {
 });
 
 // READ movie by title
-app.get("/movies/:title", (req, res) => {
-  const { title } = req.params;
-  const movie = topMovies.find((movie) => movie.title === title);
-
-  if (movie) {
-    res.status(200).json(movie);
-  } else {
-    res.status(400).send("No such movie");
-  }
+app.get("/movies/:Title", (req, res) => {
+  Movies.findOne({ Title: req.params.Title })
+    .then((movie) => {
+      res.json(movie);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // READ movie by genre
