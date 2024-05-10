@@ -122,7 +122,7 @@ app.get("/movies/genre/:Name", async (req, res) => {
 });
 
 // READ movie by director
-app.get("/director/:Name", async (req, res) => {
+app.get("/movies/director/:Name", async (req, res) => {
   await Movies.find({ "Director.Name": req.params.Name })
     .then((movies) => {
       res.json(movies);
