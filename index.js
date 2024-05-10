@@ -123,9 +123,9 @@ app.get("/movies/genre/:Name", async (req, res) => {
 
 // READ movie by director
 app.get("/director/:Name", async (req, res) => {
-  await Directors.findOne({ Name: req.params.Name })
-    .then((director) => {
-      res.json(director);
+  await Movies.find({ "Director.Name": req.params.Name })
+    .then((movies) => {
+      res.json(movies);
     })
     .catch((err) => {
       console.error(err);

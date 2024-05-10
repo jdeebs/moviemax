@@ -160,16 +160,30 @@
       <td>N/A</td>
       <td>application/json</td>
       <td>
-        <pre><code>http://example.com/movies/genre/Western</code></pre>
+        <pre><code>http://example.com/movies/genre/Action</code></pre>
       </td>
       <td>
         <pre><code>[
-  {
-    "title": "The Good, the Bad and the Ugly",
-    "genre": {
-      "name": "Western",
-      "description": "..."
-    }
+{
+  "Genre": {
+        "Name": "Action",
+        "Description": "..."
+  },
+  "Director": {
+          "Name": "Christopher Nolan",
+          "Bio": "...",
+          "Birth": "1970"
+  },
+  "_id": "6639bc9e491a0a26da3434c1",
+  "Title": "The Dark Knight",
+  "Description": "...",
+  "ImagePath": "darkknight.png",
+  "Featured": true,
+  "Actors": [
+        "Christian Bale",
+        "Heath Ledger",
+        "Aaron Eckhart"
+    ]
   }
 ]</code></pre>
       </td>
@@ -254,7 +268,40 @@
     </code></pre>
       </td>
     </tr>
-    <!-- /users/:id -->
+    <!-- /users/:Username -->
+    <tr>
+      <td>Update user data by username</td>
+      <td>/users/:Username</td>
+      <td>PUT</td>
+      <td>N/A</td>
+      <td>application/json</td>
+      <td>application/json</td>
+      <td>
+        <pre><code>{
+  "_id": "663d27dca37f50f676329974",
+  "Username": "testuser01",
+  "Password": "updatedPassword",
+  "Email": "email@email.com",
+  "Birthday": "1995-09-02T00:00:00.000Z",
+  "FavoriteMovies": [],
+  "__v": 0
+}
+    </code></pre>
+      </td>
+      <td>
+        <pre><code>{
+  "_id": "663d27dca37f50f676329974",
+  "Username": "testuser01",
+  "Password": "updatedPassword",
+  "Email": "email@email.com",
+  "Birthday": "1995-09-02T00:00:00.000Z",
+  "FavoriteMovies": [],
+  "__v": 0
+}
+    </code></pre>
+      </td>
+    </tr>
+    <!-- /users/:Username -->
     <tr>
       <td>Delete user by username</td>
       <td>/users/:Username</td>
