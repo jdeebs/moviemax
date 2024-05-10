@@ -44,7 +44,7 @@
       <th>Example Response</th>
     </tr>
     <!-- Rows with API endpoints documentation -->
-    <!-- /user -->
+    <!-- /users -->
     <tr>
       <td>Create new user</td>
       <td>/users</td>
@@ -54,13 +54,21 @@
       <td>application/json</td>
       <td>
         <pre><code>{
-  "name": "John"
+  "Username": "testuser01",
+  "Password": "password",
+  "Email": "email@email.com",
+  "Birthday": "1995-09-02"
 }</code></pre>
       </td>
       <td>
         <pre><code>{
-  "id": "d6c1b913-d8ad-4b57-a346-7f4b674ac67c",
-  "name": "John"
+  "Username": "testuser01",
+  "Password": "password",
+  "Email": "email@email.com",
+  "Birthday": "1995-09-02T00:00:00.000Z",
+  "FavoriteMovies": [],
+  "_id": "663d58b52d2a0f9766b16a17",
+  "__v": 0
 }</code></pre>
       </td>
     </tr>
@@ -117,20 +125,25 @@
       </td>
       <td>
         <pre><code>{
+  "Genre": {
+      "Name": "Drama",
+      "Description": "..."
+  },
+    "Director": {
+      "Name": "Frank Darabont",
+      "Bio": "...",
+      "Birth": "1959"
+  },
   "_id": "6639bb7e491a0a26da3434b5",
-  "title": "The Shawshank Redemption",
-  "year": 1994,
-  "director": "Frank Darabont",
-  "cast": [
-    "Tim Robbins",
-    "Morgan Freeman",
-    "Bob Gunton"
-  ],
-  "imdbRating": 9.3,
-  "genre": {
-    "name": "Drama",
-    "description": "..."
-  }
+  "Title": "The Shawshank Redemption",
+  "Description": "...",
+  "ImagePath": "shawshankredemption.png",
+  "Featured": true,
+  "Actors": [
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton"
+  ]
 }
 {
   title: "The Godfather",
@@ -174,19 +187,25 @@
       </td>
       <td>
         <pre><code>{
-  "title": "The Shawshank Redemption",
-  "year": 1994,
-  "director": "Frank Darabont",
-  "cast": [
-    "Tim Robbins",
-    "Morgan Freeman",
-    "Bob Gunton"
-  ],
-  "imdbRating": 9.3,
-  "genre": {
-    "name": "Drama",
-    "description": "..."
-  }
+  "Genre": {
+     "Name": "Drama",
+      "Description": "..."
+  },
+    "Director": {
+      "Name": "Frank Darabont",
+      "Bio": "...",
+      "Birth": "1959"
+  },
+  "_id": "6639bb7e491a0a26da3434b5",
+  "Title": "The Shawshank Redemption",
+  "Description": "...",
+  "ImagePath": "shawshankredemption.png",
+  "Featured": true,
+  "Actors": [
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton"
+  ]
 }</code></pre>
       </td>
     </tr>

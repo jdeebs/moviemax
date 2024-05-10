@@ -110,24 +110,15 @@ app.get("/movies/:Title", (req, res) => {
 });
 
 // READ movie by genre
-app.get("/movies/genre/:genreName", (req, res) => {
-  const { genreName } = req.params;
-  const moviesWithGenre = topMovies.filter(
-    (movie) => movie.genre.name === genreName
-  );
-  const genre = topMovies.find((movie) => movie.genre.name === genreName).genre;
-
-  if (moviesWithGenre.length > 0) {
-    const moviesWithTitle = moviesWithGenre.map((movie) => {
-      return {
-        title: movie.title,
-        genre: movie.genre,
-      };
+app.get("/movies/genre/:Name", (req, res) => {
+  Movies.find({ "Genre.Name": req.params.Name })
+    .then((movies) => {
+      res.json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
     });
-    res.status(200).json(moviesWithTitle);
-  } else {
-    res.status(400).send("No movies found for the given genre");
-  }
 });
 
 // READ movie by director
