@@ -86,8 +86,8 @@ app.get("/", (req, res) => {
 });
 
 // READ all movie data
-app.get("/movies", (req, res) => {
-  Movies.find()
+app.get("/movies", async (req, res) => {
+  await Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
     })
@@ -98,8 +98,8 @@ app.get("/movies", (req, res) => {
 });
 
 // READ movie by title
-app.get("/movies/:Title", (req, res) => {
-  Movies.findOne({ Title: req.params.Title })
+app.get("/movies/:Title", async (req, res) => {
+  await Movies.findOne({ Title: req.params.Title })
     .then((movie) => {
       res.json(movie);
     })
@@ -110,8 +110,8 @@ app.get("/movies/:Title", (req, res) => {
 });
 
 // READ movie by genre
-app.get("/movies/genre/:Name", (req, res) => {
-  Movies.find({ "Genre.Name": req.params.Name })
+app.get("/movies/genre/:Name", async (req, res) => {
+  await Movies.find({ "Genre.Name": req.params.Name })
     .then((movies) => {
       res.json(movies);
     })
@@ -122,8 +122,8 @@ app.get("/movies/genre/:Name", (req, res) => {
 });
 
 // READ movie by director
-app.get("/director/:Name", (req, res) => {
-  Directors.findOne({ Name: req.params.Name })
+app.get("/director/:Name", async (req, res) => {
+  await Directors.findOne({ Name: req.params.Name })
     .then((director) => {
       res.json(director);
     })
@@ -143,21 +143,6 @@ app.get("/users/:Username", async (req, res) => {
       console.error(err);
       res.status(500).send("Error: " + err);
     });
-});
-
-// UPDATE users name by ID
-app.patch("/users/:id", (req, res) => {
-  const { id } = req.params;
-  const updateUser = req.body;
-
-  let user = users.find((user) => user.id == id);
-
-  if (user) {
-    user.name = updateUser.name;
-    res.status(200).json(user);
-  } else {
-    res.status(400).send("No such user");
-  }
 });
 
 // UPDATE user by username
