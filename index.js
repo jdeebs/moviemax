@@ -5,8 +5,7 @@ const express = require("express"),
   path = require("path"),
   uuid = require("uuid"),
   mongoose = require("mongoose"),
-  Models = require("./models.js"),
-  passport = require("./passport");
+  Models = require("./models.js");
 const { title } = require("process");
 
 // Create an Express application
@@ -15,8 +14,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Import auth
+// Import auth and require Passport module
 let auth = require("./auth")(app); // (app) argument ensures Express is available in auth.js
+const passport = require("passport");
+require("passport");
 
 // Reference movie and user Mongoose models
 const Movies = Models.Movie;
@@ -90,16 +91,20 @@ app.get("/", (req, res) => {
 });
 
 // READ all movie data
-app.get("/movies", async (req, res) => {
-  await Movies.find()
-    .then((movies) => {
-      res.status(201).json(movies);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+app.get(
+  "/movies",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    await Movies.find()
+      .then((movies) => {
+        res.status(201).json(movies);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
 
 // READ movie by title
 app.get("/movies/:Title", async (req, res) => {

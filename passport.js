@@ -15,24 +15,24 @@ passport.use(
     },
     async (username, password, callback) => {
       console.log(`${username} ${password}`);
-    },
-    await Users.findOne({ Username: username })
-      .then((user) => {
-        if (!user) {
-          console.log("Incorrect username");
-          return callback(null, false, {
-            message: "Incorrect username or password.",
-          });
-        }
-        console.log("Finished");
-        return callback(null, user);
-      })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-          return callback(err);
-        }
-      })
+      await Users.findOne({ Username: username })
+        .then((user) => {
+          if (!user) {
+            console.log("Incorrect username");
+            return callback(null, false, {
+              message: "Incorrect username or password.",
+            });
+          }
+          console.log("Finished");
+          return callback(null, user);
+        })
+        .catch((error) => {
+          if (error) {
+            console.log(error);
+            return callback(error);
+          }
+        });
+    }
   )
 );
 
