@@ -14,6 +14,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Import auth
+let auth = require("./auth")(app); // (app) argument ensures Express is available in auth.js
+
 // Reference movie and user Mongoose models
 const Movies = Models.Movie;
 const Users = Models.User;
