@@ -5,7 +5,8 @@ const express = require("express"),
   path = require("path"),
   uuid = require("uuid"),
   mongoose = require("mongoose"),
-  Models = require("./models.js");
+  Models = require("./models.js"),
+  passport = require("./passport");
 const { title } = require("process");
 
 // Create an Express application
