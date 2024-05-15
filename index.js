@@ -14,6 +14,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Import CORS
+const cors = require("cors");
+app.use(cors());
+
 // Import auth and require Passport module
 let auth = require("./auth")(app); // (app) argument ensures Express is available in auth.js
 const passport = require("passport");
