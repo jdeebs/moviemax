@@ -29,10 +29,10 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // Allow Mongoose to connect to the database LOCALLY
-// mongoose.connect("mongodb://localhost:27017/movieMaxDB");
+mongoose.connect("mongodb://localhost:27017/movieMaxDB");
 
 // Allow Mongoose to connect to the database REMOTELY
-mongoose.connect( process.env.CONNECTION_URI );
+// mongoose.connect(process.env.CONNECTION_URI);
 
 // Create a write stream for logging
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
@@ -109,9 +109,9 @@ app.post(
       .then((updatedUser) => {
         res.json(updatedUser);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -130,9 +130,9 @@ app.get(
       .then((movies) => {
         res.status(201).json(movies);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -146,9 +146,9 @@ app.get(
       .then((movie) => {
         res.json(movie);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -162,9 +162,9 @@ app.get(
       .then((movies) => {
         res.json(movies);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -178,9 +178,9 @@ app.get(
       .then((movies) => {
         res.json(movies);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -194,9 +194,9 @@ app.get(
       .then((user) => {
         res.json(user);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -204,8 +204,25 @@ app.get(
 // UPDATE user by username
 app.put(
   "/users/:Username",
+  [
+    check("Username", "Username is required").isLength({ min: 5 }),
+    check(
+      "Username",
+      "Username contains non alphanumeric characters - not allowed."
+    ).isAlphanumeric(),
+    check("Password", "Password is required").not().isEmpty(),
+    check("Email", "Email does not appear to be valid").isEmail(),
+  ],
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password);
+
     // Condition to check user
     if (req.user.Username !== req.params.Username) {
       return res.status(400).send("Permission denied");
@@ -215,7 +232,7 @@ app.put(
       {
         $set: {
           Username: req.body.Username,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Email,
           Birthday: req.body.Birthday,
         },
@@ -223,11 +240,11 @@ app.put(
       { new: true }
     ) // Make sure the updated document is returned
       .then((updatedUser) => {
-        res.json(updatedUser);
+        res.status(201).json(updatedUser);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -245,9 +262,9 @@ app.delete(
           res.status(200).send(req.params.Username + " has been deleted.");
         }
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
@@ -267,16 +284,16 @@ app.delete(
       .then((updatedUser) => {
         res.json(updatedUser);
       })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
       });
   }
 );
 
 // Error-handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
+app.use((error, req, res, next) => {
+  console.error(error.stack);
   res.status(500).send("Something broke!");
 });
 

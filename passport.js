@@ -61,9 +61,9 @@ passport.use(
           // Return user if found
           return callback(null, user);
         })
-        .catch((err) => {
+        .catch((error) => {
           // Return error if user not found
-          return callback(err);
+          return callback(error);
         });
     }
   )
