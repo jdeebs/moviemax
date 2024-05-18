@@ -29,10 +29,10 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // Allow Mongoose to connect to the database LOCALLY
-mongoose.connect("mongodb://localhost:27017/movieMaxDB");
+// mongoose.connect("mongodb://localhost:27017/movieMaxDB");
 
 // Allow Mongoose to connect to the database REMOTELY
-// mongoose.connect(process.env.CONNECTION_URI);
+mongoose.connect(process.env.CONNECTION_URI);
 
 // Create a write stream for logging
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
