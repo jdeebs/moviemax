@@ -274,9 +274,10 @@ app.delete(
   "/users/:Username",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    await Users.findOneAndDelete({ Username: req.params.Username })
+    const del = await Users.findOneAndDelete({ Username: req.params.Username })
       .then((user) => {
         if (!user) {
+          console.log(del);
           res.status(400).send(req.params.Username + " was not found.");
         } else {
           res.status(200).send(req.params.Username + " has been deleted.");
