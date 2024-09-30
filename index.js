@@ -283,8 +283,8 @@ app.delete(
         }
       })
       .catch((error) => {
-        console.error(error);
-        res.status(500).send("Error: " + error);
+        console.error("Backend delete user error details:", error);
+        res.status(500).json({ message: "An error occurred", error: error });
       });
   }
 );
