@@ -92,24 +92,24 @@ app.post(
         if (user) {
           return res.status(400).send(req.body.Username + " already exists");
         } else {
-          Users.create({
+          return Users.create({
             Username: req.body.Username,
             Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday,
           })
             .then((user) => {
-              res.status(201).json(user);
+              return res.status(201).json(user);
             })
             .catch((error) => {
               console.error(error);
-              res.status(500).send("Error: " + error);
+              return res.status(500).send("Error: " + error);
             });
         }
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
@@ -127,18 +127,18 @@ app.post(
       { new: true } // Make sure the updated document is returned
     )
       .then((updatedUser) => {
-        res.json(updatedUser);
+        return res.json(updatedUser);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
 
 // READ endpoint for the root URL, respond with a default textual response
 app.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
-  res.send("Welcome to MovieMax!");
+  return res.send("Welcome to MovieMax!");
 });
 
 // READ all movie data
@@ -148,11 +148,11 @@ app.get(
   async (req, res) => {
     await Movies.find()
       .then((movies) => {
-        res.status(201).json(movies);
+        return res.status(201).json(movies);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
@@ -164,11 +164,11 @@ app.get(
   async (req, res) => {
     await Movies.findOne({ Title: req.params.Title })
       .then((movie) => {
-        res.json(movie);
+        return res.json(movie);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
@@ -180,11 +180,11 @@ app.get(
   async (req, res) => {
     await Movies.find({ "Genre.Name": req.params.Name })
       .then((movies) => {
-        res.json(movies);
+        return res.json(movies);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
@@ -196,11 +196,11 @@ app.get(
   async (req, res) => {
     await Movies.find({ "Director.Name": req.params.Name })
       .then((movies) => {
-        res.json(movies);
+        return res.json(movies);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
@@ -212,11 +212,11 @@ app.get(
   async (req, res) => {
     await Users.findOne({ Username: req.params.Username })
       .then((user) => {
-        res.json(user);
+        return res.json(user);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
@@ -260,11 +260,11 @@ app.put(
       { new: true }
     ) // Make sure the updated document is returned
       .then((updatedUser) => {
-        res.status(201).json(updatedUser);
+        return res.status(201).json(updatedUser);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
@@ -277,24 +277,14 @@ app.delete(
     await Users.findOneAndDelete({ Username: req.params.Username })
       .then((user) => {
         if (!user) {
-          return res
-            .status(400)
-            .json({
-              error: {},
-              message: req.params.Username + " was not found.",
-            });
+          return res.status(400).send(req.params.Username + " was not found.");
         } else {
-          return res
-            .status(200)
-            .json({
-              error: {},
-              message: req.params.Username + " has been deleted.",
-            });
+          return res.status(200).send(req.params.Username + " has been deleted.");
         }
       })
       .catch((error) => {
-        console.error("Backend delete user error details:", error);
-        res.status(500).json({ message: "An error occurred", error: error });
+        console.error("Error details:", error);
+        return res.status(500).json({ message: "An error occurred", error: error });
       });
   }
 );
@@ -312,11 +302,11 @@ app.delete(
       { new: true } // Make sure the updated document is returned
     )
       .then((updatedUser) => {
-        res.json(updatedUser);
+        return res.json(updatedUser);
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("Error: " + error);
+        return res.status(500).send("Error: " + error);
       });
   }
 );
