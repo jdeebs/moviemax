@@ -22,6 +22,7 @@ let allowedOrigins = [
   "http://localhost:4200",
   "http://localhost:1234",
   "https://jdeebs-moviemax.netlify.app",
+  "https://jdeebs.github.io"
 ];
 app.use(
   cors({
