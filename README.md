@@ -19,6 +19,7 @@ The **MovieMax** project is a web application that provides users with access to
 
 - **Return all movies**: Allows users to retrieve a list of all movies.
 - **Get movie details by title**: Allows users to view details (description, genre, director) about a specific movie.
+- **Get cast details**: Allows users to see which actors star in which movies.
 - **Get genre details**: Allows users to view information about a genre by name (e.g., "Thriller").
 - **Get director details**: Allows users to view information about a director (bio, birth year, death year).
 - **User Registration**: Allows new users to register with a username, password, email, and date of birth.
@@ -26,7 +27,6 @@ The **MovieMax** project is a web application that provides users with access to
 - **Update User Info**: Allows users to update their personal information (username, password, email, date of birth).
 - **Favorite Movies**: Allows users to add or remove movies from their list of favorite movies.
 - **Deregister User**: Allows users to delete their account.
-- **Get cast details**: Allows users to see which actors star in which movies.
 
 ## User Stories
 
